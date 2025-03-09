@@ -4,7 +4,7 @@ import useCart from "./../../Hooks/useCart";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthContext";
 import { FaTrash } from "react-icons/fa";
-// import PaymentButton from "../../components/aymentButton";
+import PaymentButton from "../../components//PaymentButton";
 
 const Index = () => {
   const [cart, refetch] = useCart();

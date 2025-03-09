@@ -74,7 +74,7 @@ const OrderDetail = forwardRef(({ order }, ref) => {
 
         {/* Close Button */}
         <div className="modal-action">
-          <button className="btn bg-rose-700 hover:bg-red text-white" onClick={() => ref.current.close()}>
+          <button className="btn bg-rose-900 hover:bg-cyan-900 text-white" onClick={() => ref.current.close()}>
             Close
           </button>
         </div>

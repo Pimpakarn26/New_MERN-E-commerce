@@ -17,38 +17,55 @@ const Setting = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4">Settings</h2>
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Username</span>
-            </label>
-            <input
-              type="text"
-              onChange={(e) => setDisplayName(e.target.value)}
-              className="input input-bordered"
-              required
-            />
+    <div className="flex items-center justify-center min-h-screen bg-cyan-500">
+      <div className="card bg-white p-8 rounded-xl shadow-xl border w-full max-w-md">
+        <div className="card-body">
+          <h2 className="text-2xl font-bold text-center">Settings</h2>
+          
+          {/* Avatar Preview */}
+          <div className="flex justify-center mt-4">
+            <div className="avatar">
+              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={photoURL || "https://via.placeholder.com/100"} alt="Profile Preview" />
+              </div>
+            </div>
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Profile picture</span>
-            </label>
-            <input
-              type="text"
-              onChange={(e) => setPhotoURL(e.target.value)}
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control mt-6">
-            <button type="submit" className="btn bg-red text-white">
-              Update
-            </button>
-          </div>
-        </form>
+
+          {/* Form */}
+          <form className="space-y-4 mt-6" onSubmit={handleSubmit}>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Username</span>
+              </label>
+              <input
+                type="text"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                className="input input-bordered"
+                required
+              />
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Profile picture URL</span>
+              </label>
+              <input
+                type="text"
+                value={photoURL}
+                onChange={(e) => setPhotoURL(e.target.value)}
+                className="input input-bordered"
+                required
+              />
+            </div>
+
+            <div className="form-control mt-6">
+              <button type="submit" className="btn btn-primary w-full">
+                Update Profile
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import { Outlet } from "react-router";
 import logo from "/logo.png";
 import "./main.css";
 import { MdDashboard } from "react-icons/md";
-import { MdHome } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 import { AiOutlineProduct } from "react-icons/ai";

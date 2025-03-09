@@ -63,7 +63,7 @@ const Card = ({ item }) => {
         <input
           type="radio"
           name="heart"
-          className={`mask mask-heart ${isHeartFilled ? "bg-green-400" : ""}`}
+          className={`mask mask-heart ${isHeartFilled ? "bg-green-500" : ""}`}
         />
       </div>
       <figure>
@@ -81,7 +81,7 @@ const Card = ({ item }) => {
             {price} <span className="text-sm text-red">฿</span>
           </h5>
           <button
-            className="btn bg-red text-white w-1/2"
+            className="btn bg-pink-500 text-white w-1/2"
             onClick={handleAddToCart}
           >
             Add to Cart
