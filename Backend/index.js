@@ -32,7 +32,7 @@ app.use(express.json());
 
 
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to SE NPRU web blog E-commerce Restful Api</h1>");
+  res.send("<h1>Welcome to SE NPRU Web_blog E-commerce_Restful API</h1>");
 });
 
 //router

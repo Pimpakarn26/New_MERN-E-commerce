@@ -1,4 +1,5 @@
 const OrderModel = require("../models/Order");
+require("dotenv").config();
 
 exports.getAllOrders = async (req, res) => {
   try {

@@ -1,4 +1,5 @@
 const CartModel = require("../models/Cart");
+require("dotenv").config();
 
 exports.createCart = async (req, res) => {
   /**

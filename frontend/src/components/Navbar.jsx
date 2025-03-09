@@ -3,6 +3,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import Profile from "./Profile";
 import UserIcon from "../icon/UserIcon";
 import Modal from "./Modal";
+
 const Navbar = () => {
   const { user } = useContext(AuthContext);
 
@@ -42,7 +43,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 z-50 sticky top-0 bg-white">
+    <div className="navbar z-50 sticky top-0 bg-white">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -68,7 +69,7 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost font-semibold text-xl">
+        <a className="btn btn-ghost font-semibold text-xl" href="/">
           <img src="/logo.png" alt="" className="w-8 h-8" />
           SE Souvenirs
         </a>
