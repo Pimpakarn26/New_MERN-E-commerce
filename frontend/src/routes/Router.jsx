@@ -6,7 +6,7 @@ import Cart from "../pages/Cart/Index";
 import ViewProfile from "../pages/ViewProfile";
 import Setting from "../pages/Setting";
 import UserDetect from "./UserDetect";
-
+import Checkout from "../pages/Cart/Checkout";
 import AdminLayout from "../layouts/AdminLayout";
 import CreateProduct from "../pages/Admin/CreateProduct";
 import Dashborad from "../pages/Admin/Dashborad";
@@ -36,6 +36,7 @@ const router = createBrowserRouter([
           </UserDetect>
         ),
       },
+      { path: "/checkout-success", element: <Checkout /> },
       {
         path: "/profile",
         element: <ViewProfile />,
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
   },
   {
     path: "",
-    element: <ProtectAdmin><AdminLayout /></ProtectAdmin>,
+    element: (
+      <ProtectAdmin>
+        <AdminLayout />
+      </ProtectAdmin>
+    ),
     children: [
       {
         path: "dashboard",

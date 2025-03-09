@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import Swal from "sweetalert2";
 import OrderService from "../../services/order.service";
-import OrderDetail from "../components/OrderDetail";
+import OrderDetail from "../../components/OrderDetail";
 import { MdDelete, MdVisibility } from "react-icons/md";
 
 const ManageOrders = () => {
