@@ -52,7 +52,7 @@ async function uploadToFirebase(req, res, next) {
     next();
     return;
   }
-  const storageRef = ref(firebaseStorage, `SE-Shop/Bonus/${req.file.originalname}`);
+  const storageRef = ref(firebaseStorage, `se-shop/upload/${req.file.originalname}`);
   // meta data file type
   const metadata = {
     contentType: req.file.mimetype,

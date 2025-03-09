@@ -4,6 +4,8 @@ const cors = require("cors");
 const userRouter = require("./router/user.router");
 const productRouter = require("./router/product.router");
 const cartRouter = require("./router/cart.router");
+const stripeRouter = require("./router/stripe.router");
+const orderRouter = require("./router/order.router");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./doc/swagger-output.json");
 require("dotenv").config();
@@ -25,20 +27,23 @@ try {
 //allow web can connect app
 app.use(cors({ origin: BASE_URL, credentials: true }));
 // stripe webhook must use raw body
-// app.use("api/v1/stripe/webhook", express.raw({ type: "application/json" }));
+app.use("api/v1/stripe/webhook", express.raw({ type: "application/json" }));
 app.use(express.json());
 
 
-// app.get("/", (req, res) => {
-//   res.send("<h1>Welcome to SE NPRU web blog E-commerce Restful Api</h1>");
-// });
+app.get("/", (req, res) => {
+  res.send("<h1>Welcome to SE NPRU web blog E-commerce Restful Api</h1>");
+});
 
 //router
 //http://localhost:5000/api/docs
-// app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/cart", cartRouter);
+app.use("/api/v1/stripe", stripeRouter);
+app.use("/api/v1/order",orderRouter);
+
 
 //upload image for local
 app.use("/upload", express.static(__dirname + "/upload"));

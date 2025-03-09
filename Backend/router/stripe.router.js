@@ -1,10 +1,8 @@
-// const express = require('express');
-// const stripeController = require('../controllers/stripe.controller');
+const express = require("express");
+const router = express.Router();
+const stripeController = require("../controllers/stripe.controller");
 
-// const router = express.Router();
+router.post("/create-checkout-session", stripeController.createCheckoutSession);
+router.post("/webhook", stripeController.webhook);
 
-// // Define your routes and map them to controller functions
-// router.post('/create-payment-intent', stripeController.createPaymentIntent);
-// router.post('/webhook', stripeController.handleWebhook);
-
-// module.exports = router;
+module.exports = router;
