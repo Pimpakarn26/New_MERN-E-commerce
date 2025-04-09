@@ -43,7 +43,8 @@ const Card = ({ item }) => {
           timer: 1500,
           showConfirmButton: false,
         });
-        refetch();return //ถ้ามีต่อให้ใส่ return ด้วย
+        refetch();
+        return;
       }
     } catch (error) {
       Swal.fire({

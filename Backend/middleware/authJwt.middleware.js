@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const key = process.env.KEY_PASS;
 
-verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   const token = req.headers["x-access-token"];
   if (!token) {
     return res.status(401).json({ message: "Token missing" });
