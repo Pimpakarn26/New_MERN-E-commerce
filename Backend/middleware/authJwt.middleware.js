@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const key = process.env.KEY_PASS;
+const key = process.env.JWT_SECRET;
 
 const verifyToken = (req, res, next) => {
   const token = req.headers["x-access-token"];

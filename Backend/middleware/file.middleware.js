@@ -36,7 +36,7 @@ const upload = multer({
 function checkFileType(file, cb) {
   const fileType = /jpeg|jpg|png|gif|webp/;
   const extName = fileType.test(path.extname(file.originalname).toLowerCase());
-  const mimeType = fileType.test(file.mimeType);
+  const mimeType = file.mimetype.includes('image/');
 
   if (mimeType && extName) {
     return cb(null, true);
