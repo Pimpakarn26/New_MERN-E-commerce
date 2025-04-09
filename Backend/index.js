@@ -27,8 +27,18 @@ mongoose.connect(DB_URL)
   });
 
 // Allow CORS from the specified BASE_URL
-app.use(cors({ origin: BASE_URL, credentials: true }));
-
+// Allow CORS from specific domain
+const allowedOrigins = ['https://new-mern-e-commerce.vercel.app'];
+app.use(cors({
+  origin: function(origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies to be sent
+}));
 // Stripe webhook must use raw body
 app.use("/api/v1/stripe/webhook", express.raw({ type: "application/json" }));
 
