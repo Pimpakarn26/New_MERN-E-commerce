@@ -15,43 +15,47 @@ const BASE_URL = process.env.BASE_URL;
 const PORT = process.env.PORT || 5000;  // fallback to 5000 if PORT is not defined
 const DB_URL = process.env.DB_URL;
 
+// CORS allowed origins (you can set this dynamically based on your environment)
+const allowedOrigins = [BASE_URL || 'https://new-mern-e-commerce.vercel.app'];
+
 const app = express();
 
-//connect to MongoDB
-mongoose.connect(DB_URL)
+// Connect to MongoDB
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("Connect to MongoDB Successfully");
+    console.log("Connected to MongoDB successfully");
   })
   .catch((error) => {
-    console.log("DB Connect Failed", error);
+    console.error("Failed to connect to MongoDB:", error);
   });
 
-// Allow CORS from the specified BASE_URL
-// Allow CORS from specific domain
-const allowedOrigins = ['https://new-mern-e-commerce.vercel.app'];
+// CORS configuration
 app.use(cors({
-  origin: function(origin, callback) {
+  origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
+      callback(null, true);  // Allow requests from allowed origins
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true, // Allow cookies to be sent
+  credentials: true,  // Allow cookies to be sent
 }));
+
 // Stripe webhook must use raw body
 app.use("/api/v1/stripe/webhook", express.raw({ type: "application/json" }));
 
+// Middleware to parse JSON requests
 app.use(express.json());
 
+// Root endpoint
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to SE NPRU Web_blog E-commerce_Restful API</h1>");
 });
 
-// Swagger UI documentation
+// Swagger UI documentation route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Define routers
+// API routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/cart", cartRouter);
@@ -63,5 +67,5 @@ app.use("/upload", express.static(__dirname + "/upload"));
 
 // Start the server
 app.listen(PORT, () => {
-  console.log("Server is running on http://localhost:" + PORT);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
